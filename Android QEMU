@@ -93,5 +93,5 @@ save it and apply
 chmod 755 -R ./shared.sh
 
 now create a widget for termux, the shared.sh should be there
-run the shortcut widget boot to load the shared folder
+when rebooted just run the widget to rerun the bash script we created
 
