@@ -72,7 +72,7 @@ qemu-system-x86_64 \
 
 on Android qemu
 
-create a script, easire to do it with gui than vi
+create a script, easier to do it with gui than vi
 
 #!/data/data/com.termux/files/usr/bin/bash
 sudo mkdir /mnt/shared;
