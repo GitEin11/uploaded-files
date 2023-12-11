@@ -1,0 +1,97 @@
+Shared folder between Host and Android guest in QEMU
+
+sample installation of Android QEMU:
+
+
+create img:
+qemu-img create -f qcow2 androidx86.img 10G
+
+intall sample:
+qemu-system-x86_64 \
+-enable-kvm \
+-m 6144 \
+-smp 4 \
+-cpu host \
+-soundhw es1370 \
+-device virtio-mouse-pci -device virtio-keyboard-pci \
+-serial mon:stdio \
+-boot menu=off \
+-net nic \
+-net user,hostfwd=tcp::5555-:22 \
+-device virtio-vga,virgl=on \
+-display gtk,gl=on,zoom-to-fit=off \
+-hda androidx86.img \
+-cdrom android-x86_64-9.0-r2-k49.iso
+
+
+
+To permanently change resolution of Android VM. Android-x86 comes with a terminal emulator app,
+launch it and run following commands one by one (allow root access when prompted):
+su
+mount /dev/block/sda1 /mnt
+vi /mnt/grub/menu.lst
+
+Press <I> once you see the text file to start editing mode. In the first entry,
+add your desired resolution in “video=widthxheight”
+
+something like: example 480 x 900
+    kernel /blah blah/kernel blah blah blah video=480x900
+
+To save the file, first hit <Esc> key,
+then type “:wq” without quotes and then press <Enter> key.
+Run the command below to safely unmount our mount point.
+
+umount /mnt
+Reboot the Android VM. Your desired resolution is set now
+
+
+sample launcher for Android QEMU:
+qemu-system-x86_64 \
+-enable-kvm \
+-m 6144 \
+-smp 4 \
+-cpu host \
+-soundhw es1370 \
+-device virtio-mouse-pci -device virtio-keyboard-pci \
+-serial mon:stdio \
+-boot menu=off \
+-net nic \
+-net user,hostfwd=tcp::5555-:22 \
+-device virtio-vga,virgl=on \
+-display gtk,gl=on,zoom-to-fit=off \
+
+# this is example path for the shared folder, change it to your shared directory
+-fsdev local,path=/mnt/Files/qemu/shared,security_model=passthrough,id=host0 \
+
+-device virtio-9p-pci,fsdev=host0,mount_tag=shared \
+-hda /mnt/Files/qemu/androidx86.img
+
+
+
+
+
+on Android qemu
+
+Open termux and apply
+su
+
+then
+
+mkdir /data/data/com.termux/files/home/.shortcuts
+cd /data/data/com.termux/files/home/.shortcuts/
+touch ./shared.sh
+
+create the script
+vi ./shared.sh
+
+#!/data/data/com.termux/files/usr/bin/bash
+sudo mkdir /mnt/shared;
+sudo modprobe 9pnet_virtio; sudo mount -t 9p -o trans=virtio shared /mnt/shared
+
+save it and apply
+
+chmod 755 -R ./shared.sh
+
+now create a widget for termux, the shared.sh should be there
+run the shortcut widget boot to load the shared folder
+
