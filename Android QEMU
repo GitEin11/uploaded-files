@@ -72,6 +72,14 @@ qemu-system-x86_64 \
 
 on Android qemu
 
+create a script, easire to do it with gui than vi
+
+#!/data/data/com.termux/files/usr/bin/bash
+sudo mkdir /mnt/shared;
+sudo modprobe 9pnet_virtio; sudo mount -t 9p -o trans=virtio shared /mnt/shared
+
+save as shared.sh or whatever
+
 Intall termux and termux:widget
 Open termux and apply
 su
@@ -80,16 +88,12 @@ then
 
 mkdir /data/data/com.termux/files/home/.shortcuts
 cd /data/data/com.termux/files/home/.shortcuts/
-touch ./shared.sh
 
-create the script
-vi ./shared.sh
 
-#!/data/data/com.termux/files/usr/bin/bash
-sudo mkdir /mnt/shared;
-sudo modprobe 9pnet_virtio; sudo mount -t 9p -o trans=virtio shared /mnt/shared
+copy the script
+cp [the shared.sh location] ./shared.sh
 
-save it and apply
+then apply
 
 chmod 755 -R ./shared.sh
 
