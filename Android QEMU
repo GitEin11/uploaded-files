@@ -99,5 +99,10 @@ then apply
 chmod 755 -R ./shared.sh
 
 now create a widget for termux, the shared.sh should be there
-when rebooted just run the widget to rerun the bash script we created
+every time your reboot just run the widget to mount the shared folder
+
+
+use a file manager with root access to explore
+/mnt/shared
+
 
