@@ -76,7 +76,8 @@ create a script, easier to do it with gui than vi
 
 #!/data/data/com.termux/files/usr/bin/bash
 sudo mkdir /mnt/shared;
-sudo modprobe 9pnet_virtio; sudo mount -t 9p -o trans=virtio shared /mnt/shared
+sudo modprobe 9pnet_virtio;
+sudo mount -t 9p -o trans=virtio shared /mnt/shared
 
 save as shared.sh or whatever
 
