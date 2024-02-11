@@ -1,48 +1,47 @@
 javascript: (() => {
-	let elements = document.querySelectorAll("._2bcjL-4RRFQN5OUQMrcioo,._2iaYXFpGyyEGq1rp02cl5w,._2_tDEnGMLxpM6uOa2kaDB3._3oBPn1sFwq76ZAxXgwRhhn,._1dwExqTGJH2jnA-MYGkEL-");
-	for (let element of elements) {
-		let outerHTML = element.outerHTML;
-		if (outerHTML.includes("blur")) {
-            let regex = /src="(.*?)\?/;
-			let match = regex.exec(outerHTML);
-			let theURL = match[1];
-			if (match) {
-				theURL = theURL.replace("preview", "i");
-				let parent = element.parentElement;
-				parent.style.background = `url("${theURL}")`;
-				parent.style.backgroundSize = "cover";
-				parent.style.height = "fit-content";
-			}
-			element.style.visibility = "hidden";
-			element.style.filter = "unset !important";
-			let maximumHeight = element.offsetHeight;
-			var currentURL = window.location.href;
-			var pattern = /^https:\/\/www\.reddit\.com\/r\/[^\/]+\/comments\/.+/;
-			if (pattern.test(currentURL)) {
-				let current = element1;
-				while (current && !current.classList.contains(".m3aNC6yp8RrNM_-a0rrfa")) {
-					if (current.offsetHeight == 512) {
-						current.style.setProperty("height", maximumHeight + "px", "important");
-						current.style.setProperty("maxHeight", maximumHeight + "px", "important");
+	let TitleElements = document.querySelectorAll("._2FCtq-QzlfuN-SwVMUZMM3");
+	for (let TitleElement of TitleElements) {
+		let SpoilerElement = TitleElement.querySelector("._1wzhGvvafQFOWAyA157okr");
+		if (SpoilerElement) {
+			let ContainerElement = TitleElement.closest("._11R7M_VOgKO1RJyRSRErT3");
+			if (ContainerElement) {
+				let target1s = ContainerElement.querySelectorAll("._2_tDEnGMLxpM6uOa2kaDB3._3oBPn1sFwq76ZAxXgwRhhn,._1dwExqTGJH2jnA-MYGkEL-");
+				for (let target1 of target1s) {
+					let outerHTML = target1.outerHTML;
+					let regex = /src="(.*?)\?/;
+					let match = regex.exec(outerHTML);
+					if (match) {
+						let theURL = match[1];
+						theURL = theURL.replace("preview", "i");
+						let parent = target1.parentElement;
+						parent.style.background = `url("${theURL}")`;
+						parent.style.backgroundSize = "cover";
+						parent.style.height = "fit-content";
 					}
-					current = current.parentElement;
 				}
-				let target = document.querySelector(".m3aNC6yp8RrNM_-a0rrfa,.KVyBaj7FjzElWsqJDmw7v");
-				target.style.setProperty("height", maximumHeight + "px", "important");
-				target.style.setProperty("maxHeight", maximumHeight + "px", "important");
-				element.parentElement.style.maxHeight = maximumHeight + "px";
-				element.closest(".m3aNC6yp8RrNM_-a0rrfa").style.maxHeight = maximumHeight + "px";
-				element.closest(".m3aNC6yp8RrNM_-a0rrfa").style.height = maximumHeight + "px";
-			} else {
-				element.closest(".KVyBaj7FjzElWsqJDmw7v").style.maxHeight = maximumHeight + "px";
-				element.closest(".m3aNC6yp8RrNM_-a0rrfa").style.maxHeight = maximumHeight + "px";
-				element.closest(".KVyBaj7FjzElWsqJDmw7v").style.height = maximumHeight + "px";
-				element.closest(".m3aNC6yp8RrNM_-a0rrfa").style.height = maximumHeight + "px";
+				let target2s = ContainerElement.querySelectorAll("._2bcjL-4RRFQN5OUQMrcioo,._2iaYXFpGyyEGq1rp02cl5w,._2_tDEnGMLxpM6uOa2kaDB3._3oBPn1sFwq76ZAxXgwRhhn,._1dwExqTGJH2jnA-MYGkEL-");
+				for (let target2 of target2s) {
+					target2.style.visibility = "hidden";
+					target2.style.filter = "unset !important";
+				}
+				let target3s = ContainerElement.querySelectorAll(".m3aNC6yp8RrNM_-a0rrfa");
+				for (let target3 of target3s) {
+					target3.style.background = "#0000";
+				}
+				let target4s = ContainerElement.querySelectorAll("._2_tDEnGMLxpM6uOa2kaDB3._3oBPn1sFwq76ZAxXgwRhhn,._1dwExqTGJH2jnA-MYGkEL-");
+				for (let target4 of target4s) {
+					let targetImageHeight = target4.offsetHeight;				
+					if ( targetImageHeight > target4.closest(".STit0dLageRsa2yR4te_b").offsetHeight ) {
+						target4.parentElement.style.maxHeight = maximumHeight + "px";
+						let targetf1 = ContainerElement.querySelector(".KVyBaj7FjzElWsqJDmw7v");
+						targetf1.style.maxHeight = maximumHeight + "px";
+						targetf1.style.height = maximumHeight + "px";
+						let targetf2 = ContainerElement.querySelector(".m3aNC6yp8RrNM_-a0rrfa");
+						targetf2.style.maxHeight = maximumHeight + "px";
+						targetf2.style.height = maximumHeight + "px";	
+					}
+				}
 			}
-			let element2s = document.querySelectorAll(".m3aNC6yp8RrNM_-a0rrfa");
-			for (let element2 of element2s) {
-			element2.style.background = "#0000";
-			}
-       	}
+		}
 	}
 })();
