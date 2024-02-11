@@ -1,0 +1,26 @@
+javascript: (() => {
+    let elements = document.querySelectorAll(".emoji-to-english-translation");
+    for (let element of elements) {
+        let text = element.textContent;
+        let words = text.split(/[\[\]]+/);
+        let unique = [];
+        for (let word of words) {
+            word = word.trim();
+            if (word && !unique.includes(word)) {
+                unique.push(word);
+            }
+        }
+        if (unique.length > 0) {
+            let newText = "[ " + unique.join(" ] [ ") + " ] ";
+            element.textContent = newText;
+        } else {
+            element.textContent = "";
+        }
+    }
+    let elements2 = document.querySelectorAll(".emoji-to-english-translatable");
+    for (let element of elements2) {
+        let text = element.textContent;
+        let newText = text.replace(/(\p{Emoji})\1+/gu, '$1');
+        element.textContent = newText;
+    }
+})()
