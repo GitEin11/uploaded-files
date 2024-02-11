@@ -48,11 +48,6 @@ javascript: (() => {
     }
 
     function processImage() {
-        var currentURL = window.location.href;
-        var pattern = /^https:\/\/www\.reddit\.com\/r\/[^\/]+\/$/;
-        if (pattern.test(currentURL)) {
-            processImagereset();
-        }
         let elements = document.querySelectorAll("._3hUbl08LBz2mbXjy0iYhOS,._3b8u2OJXaSDdBWoRB7zUoK");
         for (let element of elements) {
             element.style.visibility = "hidden";
@@ -81,15 +76,9 @@ javascript: (() => {
             if (imageElement.offsetHeight > 512) {
                 maximumHeight = imageElement.offsetHeight;
             }
-            var currentURL2 = window.location.href;
-            var pattern1 = /^https:\/\/www\.reddit\.com\/r\/[^\/]+\/$/;
-            var pattern2 = /^https:\/\/www\.reddit\.com\/r\/[^\/]+\/comments\/.+/;
-            if (pattern1.test(currentURL2)) {
-                element.closest(".KVyBaj7FjzElWsqJDmw7v").style.maxHeight = maximumHeight + "px";
-                element.closest(".m3aNC6yp8RrNM_-a0rrfa").style.maxHeight = maximumHeight + "px";
-                element.closest(".KVyBaj7FjzElWsqJDmw7v").style.height = maximumHeight + "px";
-                element.closest(".m3aNC6yp8RrNM_-a0rrfa").style.height = maximumHeight + "px";
-            } else if (pattern2.test(currentURL)) {
+            var currentURL = window.location.href;
+            var pattern = /^https:\/\/www\.reddit\.com\/r\/[^\/]+\/comments\/.+/;
+            if (pattern.test(currentURL)) {
                 let current = element;
                 while (current && !current.classList.contains(".m3aNC6yp8RrNM_-a0rrfa")) {
                     if (current.offsetHeight == 512) {
@@ -103,6 +92,13 @@ javascript: (() => {
                 target.style.setProperty("maxHeight", maximumHeight + "px", "important");
                 element.parentElement.style.maxHeight = maximumHeight + "px";
                 element.closest(".m3aNC6yp8RrNM_-a0rrfa").style.maxHeight = maximumHeight + "px";
+                element.closest(".m3aNC6yp8RrNM_-a0rrfa").style.height = maximumHeight + "px";
+
+            } else {
+                element.closest(".KVyBaj7FjzElWsqJDmw7v").style.maxHeight = maximumHeight + "px";
+                element.closest(".m3aNC6yp8RrNM_-a0rrfa").style.maxHeight = maximumHeight + "px";
+                element.closest(".KVyBaj7FjzElWsqJDmw7v").style.height = maximumHeight + "px";
+                element.closest(".m3aNC6yp8RrNM_-a0rrfa").style.height = maximumHeight + "px";
             }
         }
     }
