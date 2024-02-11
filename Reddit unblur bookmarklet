@@ -1,0 +1,25 @@
+javascript: (() => {
+    let elements = document.querySelectorAll("._2_tDEnGMLxpM6uOa2kaDB3._3oBPn1sFwq76ZAxXgwRhhn,._1dwExqTGJH2jnA-MYGkEL-");
+    for (let element of elements) {
+        let outerHTML = element.outerHTML;
+        let regex = /src="(.*?)\?/;
+        let match = regex.exec(outerHTML);
+        if (match) {
+            let theURL = match[1];
+            theURL = theURL.replace("preview", "i");
+            let parent = element.parentElement;
+            parent.style.background = `url("${theURL}")`;
+            parent.style.backgroundSize = "cover";
+            parent.style.height = "fit-content";
+        }
+    };
+    let elements2 = document.querySelectorAll("._2bcjL-4RRFQN5OUQMrcioo,._2iaYXFpGyyEGq1rp02cl5w,._2_tDEnGMLxpM6uOa2kaDB3._3oBPn1sFwq76ZAxXgwRhhn");
+    for (let element2 of elements2) {
+        element2.style.visibility = "hidden";
+        element2.style.filter = "unset !important";
+    }
+    let elements3 = document.querySelectorAll(".m3aNC6yp8RrNM_-a0rrfa");
+    for (let element3 of elements3) {
+        element3.style.background = "#0000";
+    }
+})();
