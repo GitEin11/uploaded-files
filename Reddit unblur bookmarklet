@@ -1,25 +1,48 @@
 javascript: (() => {
-    let elements = document.querySelectorAll("._2_tDEnGMLxpM6uOa2kaDB3._3oBPn1sFwq76ZAxXgwRhhn,._1dwExqTGJH2jnA-MYGkEL-");
-    for (let element of elements) {
-        let outerHTML = element.outerHTML;
-        let regex = /src="(.*?)\?/;
-        let match = regex.exec(outerHTML);
-        if (match) {
-            let theURL = match[1];
-            theURL = theURL.replace("preview", "i");
-            let parent = element.parentElement;
-            parent.style.background = `url("${theURL}")`;
-            parent.style.backgroundSize = "cover";
-            parent.style.height = "fit-content";
-        }
-    };
-    let elements2 = document.querySelectorAll("._2bcjL-4RRFQN5OUQMrcioo,._2iaYXFpGyyEGq1rp02cl5w,._2_tDEnGMLxpM6uOa2kaDB3._3oBPn1sFwq76ZAxXgwRhhn");
-    for (let element2 of elements2) {
-        element2.style.visibility = "hidden";
-        element2.style.filter = "unset !important";
-    }
-    let elements3 = document.querySelectorAll(".m3aNC6yp8RrNM_-a0rrfa");
-    for (let element3 of elements3) {
-        element3.style.background = "#0000";
-    }
+	let elements = document.querySelectorAll("._2bcjL-4RRFQN5OUQMrcioo,._2iaYXFpGyyEGq1rp02cl5w,._2_tDEnGMLxpM6uOa2kaDB3._3oBPn1sFwq76ZAxXgwRhhn,._1dwExqTGJH2jnA-MYGkEL-");
+	for (let element of elements) {
+		let outerHTML = element.outerHTML;
+		if (outerHTML.includes("blur")) {
+            let regex = /src="(.*?)\?/;
+			let match = regex.exec(outerHTML);
+			let theURL = match[1];
+			if (match) {
+				theURL = theURL.replace("preview", "i");
+				let parent = element.parentElement;
+				parent.style.background = `url("${theURL}")`;
+				parent.style.backgroundSize = "cover";
+				parent.style.height = "fit-content";
+			}
+			element.style.visibility = "hidden";
+			element.style.filter = "unset !important";
+			let maximumHeight = element.offsetHeight;
+			var currentURL = window.location.href;
+			var pattern = /^https:\/\/www\.reddit\.com\/r\/[^\/]+\/comments\/.+/;
+			if (pattern.test(currentURL)) {
+				let current = element1;
+				while (current && !current.classList.contains(".m3aNC6yp8RrNM_-a0rrfa")) {
+					if (current.offsetHeight == 512) {
+						current.style.setProperty("height", maximumHeight + "px", "important");
+						current.style.setProperty("maxHeight", maximumHeight + "px", "important");
+					}
+					current = current.parentElement;
+				}
+				let target = document.querySelector(".m3aNC6yp8RrNM_-a0rrfa,.KVyBaj7FjzElWsqJDmw7v");
+				target.style.setProperty("height", maximumHeight + "px", "important");
+				target.style.setProperty("maxHeight", maximumHeight + "px", "important");
+				element.parentElement.style.maxHeight = maximumHeight + "px";
+				element.closest(".m3aNC6yp8RrNM_-a0rrfa").style.maxHeight = maximumHeight + "px";
+				element.closest(".m3aNC6yp8RrNM_-a0rrfa").style.height = maximumHeight + "px";
+			} else {
+				element.closest(".KVyBaj7FjzElWsqJDmw7v").style.maxHeight = maximumHeight + "px";
+				element.closest(".m3aNC6yp8RrNM_-a0rrfa").style.maxHeight = maximumHeight + "px";
+				element.closest(".KVyBaj7FjzElWsqJDmw7v").style.height = maximumHeight + "px";
+				element.closest(".m3aNC6yp8RrNM_-a0rrfa").style.height = maximumHeight + "px";
+			}
+			let element2s = document.querySelectorAll(".m3aNC6yp8RrNM_-a0rrfa");
+			for (let element2 of element2s) {
+			element2.style.background = "#0000";
+			}
+       	}
+	}
 })();
