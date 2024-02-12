@@ -1,11 +1,12 @@
 javascript: (() => {
-	let Ttitles = document.querySelectorAll("._3wiKjmhpIpoTE2r5KCm2o6");
+	let Ttitles = document.querySelectorAll("._3wiKjmhpIpoTE2r5KCm2o6,._2fiIRtMpITeCAzXc4cANKp");
 	for (let Ttitle of Ttitles) {
 		if (Ttitle) {
 			let Sspoilers = Ttitle.querySelectorAll("._1wzhGvvafQFOWAyA157okr");
 			for (let Sspoiler of Sspoilers) {
 				if (Sspoiler) {
-					let Ccontainer = Sspoiler.closest("._1poyrkZ7g36PawDueRza-J");
+					let Ccontainer = Sspoiler.closest("._1poyrkZ7g36PawDueRza-J, ._2rszc84L136gWQrkwH6IaM");
+
 					let target1s = Ccontainer.querySelectorAll("._2_tDEnGMLxpM6uOa2kaDB3._3oBPn1sFwq76ZAxXgwRhhn,._1dwExqTGJH2jnA-MYGkEL-");
 					for (let target1 of target1s) {
 						let outerHTML = target1.outerHTML;
@@ -13,25 +14,50 @@ javascript: (() => {
 						let match = regex.exec(outerHTML);
 						if (match) {
 							let theURL = match[1];
-							if (theURL.includes("external-preview")) {
-                                				;
-							} else {
+							if (theURL.includes("external-preview")) {} else {
 								theURL = theURL.replace("preview", "i");
 								let parent = target1.parentElement;
 								parent.style.background = `url("${theURL}")`;
 								parent.style.backgroundSize = "cover";
 								parent.style.height = "fit-content";
-
-								let elements2 = Ccontainer.querySelectorAll("._2bcjL-4RRFQN5OUQMrcioo,._2iaYXFpGyyEGq1rp02cl5w,._2_tDEnGMLxpM6uOa2kaDB3._3oBPn1sFwq76ZAxXgwRhhn");
-								for (let target2 of elements2) {
-									target2.style.visibility = "hidden";
-									target2.style.filter = "unset !important";
-								}
 							}
 						}
 					}
-					let elements3 = Ccontainer.querySelectorAll(".m3aNC6yp8RrNM_-a0rrfa");
-					for (let target3 of elements3) {
+
+					let target2s = Ccontainer.querySelectorAll("._2bcjL-4RRFQN5OUQMrcioo,._2iaYXFpGyyEGq1rp02cl5w,._2_tDEnGMLxpM6uOa2kaDB3._3oBPn1sFwq76ZAxXgwRhhn,._1dwExqTGJH2jnA-MYGkEL-");
+					for (let target2 of target2s) {
+						target2.style.visibility = "hidden";
+						target2.style.filter = "unset !important";
+
+						let maximumHeight = target2.offsetHeight;
+						var currentURL = window.location.href;
+						var pattern = /^https:\/\/www\.reddit\.com\/r\/[^\/]+\/comments\/.+/;
+						if (pattern.test(currentURL)) {
+							let current = target2;
+							while (current && !current.classList.contains(".m3aNC6yp8RrNM_-a0rrfa")) {
+								if (current.offsetHeight == 512) {
+									current.style.setProperty("height", maximumHeight + "px", "important");
+									current.style.setProperty("maxHeight", maximumHeight + "px", "important");
+								}
+								current = current.parentElement;
+							}
+							let targetf = document.querySelector(".m3aNC6yp8RrNM_-a0rrfa,.KVyBaj7FjzElWsqJDmw7v");
+							targetf.style.setProperty("height", maximumHeight + "px", "important");
+							targetf.style.setProperty("maxHeight", maximumHeight + "px", "important");
+							target2.parentElement.style.maxHeight = maximumHeight + "px";
+							target2.closest(".m3aNC6yp8RrNM_-a0rrfa").style.maxHeight = maximumHeight + "px";
+							target2.closest(".m3aNC6yp8RrNM_-a0rrfa").style.height = maximumHeight + "px";
+
+						} else {
+							target2.closest(".KVyBaj7FjzElWsqJDmw7v").style.maxHeight = maximumHeight + "px";
+							target2.closest(".m3aNC6yp8RrNM_-a0rrfa").style.maxHeight = maximumHeight + "px";
+							target2.closest(".KVyBaj7FjzElWsqJDmw7v").style.height = maximumHeight + "px";
+							target2.closest(".m3aNC6yp8RrNM_-a0rrfa").style.height = maximumHeight + "px";
+						}
+					}
+
+					let element3s = Ccontainer.querySelectorAll(".m3aNC6yp8RrNM_-a0rrfa");
+					for (let target3 of element3s) {
 						target3.style.background = "#0000";
 					}
 				}
