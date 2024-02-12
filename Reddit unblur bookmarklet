@@ -1,44 +1,38 @@
 javascript: (() => {
-	let TitleElements = document.querySelectorAll("._2FCtq-QzlfuN-SwVMUZMM3");
-	for (let TitleElement of TitleElements) {
-		let SpoilerElement = TitleElement.querySelector("._1wzhGvvafQFOWAyA157okr");
-		if (SpoilerElement) {
-			let ContainerElement = TitleElement.closest("._11R7M_VOgKO1RJyRSRErT3");
-			if (ContainerElement) {
-				let target1s = ContainerElement.querySelectorAll("._2_tDEnGMLxpM6uOa2kaDB3._3oBPn1sFwq76ZAxXgwRhhn,._1dwExqTGJH2jnA-MYGkEL-");
-				for (let target1 of target1s) {
-					let outerHTML = target1.outerHTML;
-					let regex = /src="(.*?)\?/;
-					let match = regex.exec(outerHTML);
-					if (match) {
-						let theURL = match[1];
-						theURL = theURL.replace("preview", "i");
-						let parent = target1.parentElement;
-						parent.style.background = `url("${theURL}")`;
-						parent.style.backgroundSize = "cover";
-						parent.style.height = "fit-content";
+	let Ttitles = document.querySelectorAll("._3wiKjmhpIpoTE2r5KCm2o6");
+	for (let Ttitle of Ttitles) {
+		if (Ttitle) {
+			let Sspoilers = Ttitle.querySelectorAll("._1wzhGvvafQFOWAyA157okr");
+			for (let Sspoiler of Sspoilers) {
+				if (Sspoiler) {
+					let Ccontainer = Sspoiler.closest("._1poyrkZ7g36PawDueRza-J");
+					let target1s = Ccontainer.querySelectorAll("._2_tDEnGMLxpM6uOa2kaDB3._3oBPn1sFwq76ZAxXgwRhhn,._1dwExqTGJH2jnA-MYGkEL-");
+					for (let target1 of target1s) {
+						let outerHTML = target1.outerHTML;
+						let regex = /src="(.*?)\?/;
+						let match = regex.exec(outerHTML);
+						if (match) {
+							let theURL = match[1];
+							if (theURL.includes("external-preview")) {
+                                				;
+							} else {
+								theURL = theURL.replace("preview", "i");
+								let parent = target1.parentElement;
+								parent.style.background = `url("${theURL}")`;
+								parent.style.backgroundSize = "cover";
+								parent.style.height = "fit-content";
+
+								let elements2 = Ccontainer.querySelectorAll("._2bcjL-4RRFQN5OUQMrcioo,._2iaYXFpGyyEGq1rp02cl5w,._2_tDEnGMLxpM6uOa2kaDB3._3oBPn1sFwq76ZAxXgwRhhn");
+								for (let target2 of elements2) {
+									target2.style.visibility = "hidden";
+									target2.style.filter = "unset !important";
+								}
+							}
+						}
 					}
-				}
-				let target2s = ContainerElement.querySelectorAll("._2bcjL-4RRFQN5OUQMrcioo,._2iaYXFpGyyEGq1rp02cl5w,._2_tDEnGMLxpM6uOa2kaDB3._3oBPn1sFwq76ZAxXgwRhhn,._1dwExqTGJH2jnA-MYGkEL-");
-				for (let target2 of target2s) {
-					target2.style.visibility = "hidden";
-					target2.style.filter = "unset !important";
-				}
-				let target3s = ContainerElement.querySelectorAll(".m3aNC6yp8RrNM_-a0rrfa");
-				for (let target3 of target3s) {
-					target3.style.background = "#0000";
-				}
-				let target4s = ContainerElement.querySelectorAll("._2_tDEnGMLxpM6uOa2kaDB3._3oBPn1sFwq76ZAxXgwRhhn,._1dwExqTGJH2jnA-MYGkEL-");
-				for (let target4 of target4s) {
-					let targetImageHeight = target4.offsetHeight;				
-					if ( targetImageHeight > target4.closest(".STit0dLageRsa2yR4te_b").offsetHeight ) {
-						target4.parentElement.style.maxHeight = maximumHeight + "px";
-						let targetf1 = ContainerElement.querySelector(".KVyBaj7FjzElWsqJDmw7v");
-						targetf1.style.maxHeight = maximumHeight + "px";
-						targetf1.style.height = maximumHeight + "px";
-						let targetf2 = ContainerElement.querySelector(".m3aNC6yp8RrNM_-a0rrfa");
-						targetf2.style.maxHeight = maximumHeight + "px";
-						targetf2.style.height = maximumHeight + "px";	
+					let elements3 = Ccontainer.querySelectorAll(".m3aNC6yp8RrNM_-a0rrfa");
+					for (let target3 of elements3) {
+						target3.style.background = "#0000";
 					}
 				}
 			}
