@@ -11,15 +11,12 @@ javascript: (() => {
 			container2.style.maxHeight = imageHeight + "px";
 		}
 	}
-
-
 	let element2s = document.querySelectorAll("._1apobczT0TzIKMWpza0OhL");
 	for (let element2 of element2s) {
 		let children = element2.querySelectorAll("._28TEYBuEdOuE3kN6UyoKMa");
 		for (let child of children) {
 			if (child.style.left === "0px") {
 				let img = child.querySelector("img");
-
 				let imageHeight = img.height;
 				if (imageHeight < 512) {
 					imageHeight = 512;
@@ -32,5 +29,4 @@ javascript: (() => {
 			}
 		}
 	}
-
 })();
