@@ -1,114 +1,77 @@
 javascript: (() => {
-    let referenceWidth = document.querySelector(".kcerW9lbT-se3SXd-wp2i, ._1RYN-7H8gYctjOQeL8p2Q7").offsetWidth;
-    if (referenceWidth > 700) {
-        let widthelements = document.querySelectorAll('._3m20hIKOhTTeMgPnfMbVNN, ._1dwExqTGJH2jnA-MYGkEL-');
-        for (var i = 0; i < widthelements.length; i++) {
-            widthelements[i].style.maxWidth = (referenceWidth - 82) + 'px';
-        }
-    }
 
-    function processImagereset() {
-        let elements = document.querySelectorAll("._3hUbl08LBz2mbXjy0iYhOS,._3b8u2OJXaSDdBWoRB7zUoK");
-        for (let element of elements) {
-            let maximumHeight = 512;
-            element.closest(".KVyBaj7FjzElWsqJDmw7v").style.maxHeight = maximumHeight + "px";
-            element.closest(".m3aNC6yp8RrNM_-a0rrfa").style.maxHeight = maximumHeight + "px";
-            element.closest(".KVyBaj7FjzElWsqJDmw7v").style.height = maximumHeight + "px";
-            element.closest(".m3aNC6yp8RrNM_-a0rrfa").style.height = maximumHeight + "px";
-        }
-    }
+	let media1Elements = document.querySelectorAll("._2_tDEnGMLxpM6uOa2kaDB3");
+	for (let media1Element of media1Elements) {
+		let media1Height = media1Element.offsetHeight;
 
-    function processImageS() {
-        let elements = document.querySelectorAll("._3hUbl08LBz2mbXjy0iYhOS,._3b8u2OJXaSDdBWoRB7zUoK");
-        for (let element of elements) {
-            element.style.visibility = "hidden";
-            let parent = element.parentElement.parentElement.parentElement.parentElement;
-            let maximumHeight = 512;
-            let descendants = parent.getElementsByTagName("*");
-            for (let descendant of descendants) {
-                let height = descendant.offsetHeight;
-                if (height > maximumHeight) {
-                    maximumHeight = height;
-                }
-            }
-            let current = element;
-            while (current && !current.classList.contains(".m3aNC6yp8RrNM_-a0rrfa")) {
-                if (current.offsetHeight == 512) {
-                    current.style.setProperty("height", maximumHeight + "px", "important");
-                    current.style.setProperty("maxHeight", maximumHeight + "px", "important");
-                }
-                current = current.parentElement;
-            }
-            let target = document.querySelector(".m3aNC6yp8RrNM_-a0rrfa,.KVyBaj7FjzElWsqJDmw7v");
-            target.style.setProperty("height", maximumHeight + "px", "important");
-            target.style.setProperty("maxHeight", maximumHeight + "px", "important");
-            element.parentElement.style.maxHeight = maximumHeight + "px";
-            element.closest(".m3aNC6yp8RrNM_-a0rrfa").style.maxHeight = maximumHeight + "px";
-        }
-    }
+		if (media1Height > 512) {
+			let media1Container1 = media1Element.closest("._3Oa0THmZ3f5iZXAQ0hBJ0k");
+			let media1Container2 = media1Element.closest(".m3aNC6yp8RrNM_-a0rrfa");
 
-    function processImage() {
-        let elements = document.querySelectorAll("._3hUbl08LBz2mbXjy0iYhOS,._3b8u2OJXaSDdBWoRB7zUoK");
-        for (let element of elements) {
-            element.style.visibility = "hidden";
-            let ancestor = element.closest("._1NSbknF8ucHV2abfCZw2Z1");
-            let viewFullImages = ancestor.querySelectorAll("._3hUbl08LBz2mbXjy0iYhOS,._3b8u2OJXaSDdBWoRB7zUoK");
-            for (let i = 0; i < viewFullImages.length; i++) {
-                let currentviewFullImage = viewFullImages[i];
-                currentviewFullImage.style.visibility = "hidden";
-            }
-            let descendants = ancestor.querySelectorAll("._28TEYBuEdOuE3kN6UyoKMa");
-            let descendant = null;
-            for (let i = 0; i < descendants.length; i++) {
-                let current = descendants[i];
-                if (current.style.left === "0px") {
-                    descendant = current;
-                    break;
-                }
-            }
-            let imageElement;
-            if (descendant) {
-                imageElement = descendant.querySelector("img");
-            } else {
-                imageElement = ancestor.querySelector("img");
-            }
-            let maximumHeight = 512;
-            if (imageElement.offsetHeight > 512) {
-                maximumHeight = imageElement.offsetHeight;
-            }
-            var currentURL = window.location.href;
-            var pattern = /^https:\/\/www\.reddit\.com\/r\/[^\/]+\/comments\/.+/;
-            if (pattern.test(currentURL)) {
-                let current = element;
-                while (current && !current.classList.contains(".m3aNC6yp8RrNM_-a0rrfa")) {
-                    if (current.offsetHeight == 512) {
-                        current.style.setProperty("height", maximumHeight + "px", "important");
-                        current.style.setProperty("maxHeight", maximumHeight + "px", "important");
-                    }
-                    current = current.parentElement;
-                }
-                let target = document.querySelector(".m3aNC6yp8RrNM_-a0rrfa,.KVyBaj7FjzElWsqJDmw7v");
-                target.style.setProperty("height", maximumHeight + "px", "important");
-                target.style.setProperty("maxHeight", maximumHeight + "px", "important");
-                element.parentElement.style.maxHeight = maximumHeight + "px";
-                element.closest(".m3aNC6yp8RrNM_-a0rrfa").style.maxHeight = maximumHeight + "px";
-                element.closest(".m3aNC6yp8RrNM_-a0rrfa").style.height = maximumHeight + "px";
+			media1Container1.style.setProperty("height", media1Height + "px");
+			media1Container2.style.setProperty("height", media1Height + "px");
+			media1Container1.style.maxHeight = media1Height + "px";
+			media1Container2.style.maxHeight = media1Height + "px";
+		}
+	}
 
-            } else {
-                element.closest(".KVyBaj7FjzElWsqJDmw7v").style.maxHeight = maximumHeight + "px";
-                element.closest(".m3aNC6yp8RrNM_-a0rrfa").style.maxHeight = maximumHeight + "px";
-                element.closest(".KVyBaj7FjzElWsqJDmw7v").style.height = maximumHeight + "px";
-                element.closest(".m3aNC6yp8RrNM_-a0rrfa").style.height = maximumHeight + "px";
-            }
-        }
-    }
-    let elementfs = document.querySelectorAll("._3hUbl08LBz2mbXjy0iYhOS,._3b8u2OJXaSDdBWoRB7zUoK");
-    for (let elementf of elementfs) {
-        let ancestorf = elementf.closest("._28TEYBuEdOuE3kN6UyoKMa");
-        if (ancestorf) {
-            processImage(elementf);
-        } else {
-            processImageS(elementf);
-        }
-    }
+	function CommentPage() {
+		let media2Books = document.querySelectorAll("._28TEYBuEdOuE3kN6UyoKMa");
+		let media2Book = null;
+		for (let i = 0; i < media2Books.length; i++) {
+			let current = media2Books[i];
+			if (current.style.left === "0px") {
+				media2Book = current;
+				break;
+			}
+		}
+		let media2Element = media2Book.querySelector("img");
+		let media2Height = media2Element.offsetHeight;
+
+		let media2Container1 = media2Book.closest(".KVyBaj7FjzElWsqJDmw7v");
+		let media2Container2 = media2Book.closest(".m3aNC6yp8RrNM_-a0rrfa");
+
+		media2Container1.style.setProperty("height", media2Height + "px");
+		media2Container2.style.setProperty("height", media2Height + "px");
+		media2Container1.style.maxHeight = media2Height + "px";
+		media2Container2.style.maxHeight = media2Height + "px";
+	}
+
+	function FeedPage() {
+		let elements = document.querySelectorAll("._3hUbl08LBz2mbXjy0iYhOS,._3b8u2OJXaSDdBWoRB7zUoK");
+		for (let element of elements) {
+			let parent = element.parentElement.parentElement.parentElement.parentElement;
+			let maximumHeight = 512;
+			let descendants = parent.getElementsByTagName("*");
+			for (let descendant of descendants) {
+				let height = descendant.offsetHeight;
+				if (height > maximumHeight) {
+					maximumHeight = height;
+				}
+			}
+			let media2Container1 = element.closest(".KVyBaj7FjzElWsqJDmw7v");
+			let media2Container2 = element.closest(".m3aNC6yp8RrNM_-a0rrfa");
+			media2Container1.style.setProperty("height", maximumHeight + "px");
+			media2Container2.style.setProperty("height", maximumHeight + "px");
+			media2Container1.style.maxHeight = maximumHeight + "px";
+			media2Container2.style.maxHeight = maximumHeight + "px";
+		}
+	}
+
+	var currentURL = window.location.href;
+	var pattern = /^https:\/\/www\.reddit\.com\/r\/[^\/]+\/comments\/.+/;
+	if (pattern.test(currentURL)) {
+		CommentPage();
+	} else {
+		FeedPage();
+	}
+
+	let referenceWidth = document.querySelector(".kcerW9lbT-se3SXd-wp2i, ._1RYN-7H8gYctjOQeL8p2Q7").offsetWidth;
+	if (referenceWidth > 700) {
+		let widthelements = document.querySelectorAll('._3m20hIKOhTTeMgPnfMbVNN, ._1dwExqTGJH2jnA-MYGkEL-');
+		for (var i = 0; i < widthelements.length; i++) {
+			widthelements[i].style.maxWidth = (referenceWidth - 82) + 'px';
+		}
+	}
+
 })();
