@@ -1,5 +1,13 @@
 javascript: (() => {
 
+	let referenceWidth = document.querySelector(".kcerW9lbT-se3SXd-wp2i, ._1RYN-7H8gYctjOQeL8p2Q7").offsetWidth;
+	if (referenceWidth > 700) {
+		let widthelements = document.querySelectorAll('._3m20hIKOhTTeMgPnfMbVNN, ._1dwExqTGJH2jnA-MYGkEL-');
+		for (var i = 0; i < widthelements.length; i++) {
+			widthelements[i].style.maxWidth = (referenceWidth - 82) + 'px';
+		}
+	}
+
 	let media1Elements = document.querySelectorAll("._2_tDEnGMLxpM6uOa2kaDB3");
 	for (let media1Element of media1Elements) {
 		let media1Height = media1Element.offsetHeight;
@@ -65,13 +73,4 @@ javascript: (() => {
 	} else {
 		FeedPage();
 	}
-
-	let referenceWidth = document.querySelector(".kcerW9lbT-se3SXd-wp2i, ._1RYN-7H8gYctjOQeL8p2Q7").offsetWidth;
-	if (referenceWidth > 700) {
-		let widthelements = document.querySelectorAll('._3m20hIKOhTTeMgPnfMbVNN, ._1dwExqTGJH2jnA-MYGkEL-');
-		for (var i = 0; i < widthelements.length; i++) {
-			widthelements[i].style.maxWidth = (referenceWidth - 82) + 'px';
-		}
-	}
-
 })();
