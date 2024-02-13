@@ -1,76 +1,36 @@
 javascript: (() => {
-
-	let referenceWidth = document.querySelector(".kcerW9lbT-se3SXd-wp2i, ._1RYN-7H8gYctjOQeL8p2Q7").offsetWidth;
-	if (referenceWidth > 700) {
-		let widthelements = document.querySelectorAll('._3m20hIKOhTTeMgPnfMbVNN, ._1dwExqTGJH2jnA-MYGkEL-');
-		for (var i = 0; i < widthelements.length; i++) {
-			widthelements[i].style.maxWidth = (referenceWidth - 82) + 'px';
+	let element1s = document.querySelectorAll("._2_tDEnGMLxpM6uOa2kaDB3");
+	for (let element1 of element1s) {
+		let imageHeight = element1.offsetHeight;
+		if (imageHeight > 512) {
+			let container1 = element1.closest("._3Oa0THmZ3f5iZXAQ0hBJ0k");
+			let container2 = element1.closest(".m3aNC6yp8RrNM_-a0rrfa");
+			container1.style.setProperty("height", imageHeight + "px");
+			container2.style.setProperty("height", imageHeight + "px");
+			container1.style.maxHeight = imageHeight + "px";
+			container2.style.maxHeight = imageHeight + "px";
 		}
 	}
 
-	let media1Elements = document.querySelectorAll("._2_tDEnGMLxpM6uOa2kaDB3");
-	for (let media1Element of media1Elements) {
-		let media1Height = media1Element.offsetHeight;
 
-		if (media1Height > 512) {
-			let media1Container1 = media1Element.closest("._3Oa0THmZ3f5iZXAQ0hBJ0k");
-			let media1Container2 = media1Element.closest(".m3aNC6yp8RrNM_-a0rrfa");
+	let element2s = document.querySelectorAll("._1apobczT0TzIKMWpza0OhL");
+	for (let element2 of element2s) {
+		let children = element2.querySelectorAll("._28TEYBuEdOuE3kN6UyoKMa");
+		for (let child of children) {
+			if (child.style.left === "0px") {
+				let img = child.querySelector("img");
 
-			media1Container1.style.setProperty("height", media1Height + "px");
-			media1Container2.style.setProperty("height", media1Height + "px");
-			media1Container1.style.maxHeight = media1Height + "px";
-			media1Container2.style.maxHeight = media1Height + "px";
-		}
-	}
-
-	function CommentPage() {
-		let media2Books = document.querySelectorAll("._28TEYBuEdOuE3kN6UyoKMa");
-		let media2Book = null;
-		for (let i = 0; i < media2Books.length; i++) {
-			let current = media2Books[i];
-			if (current.style.left === "0px") {
-				media2Book = current;
+				let imageHeight = img.height;
+				if (imageHeight < 512) {
+					imageHeight = 512;
+				}
+				child.closest(".KVyBaj7FjzElWsqJDmw7v").style.maxHeight = imageHeight + "px";
+				child.closest(".KVyBaj7FjzElWsqJDmw7v").style.setProperty("height", imageHeight + "px");
+				child.closest(".m3aNC6yp8RrNM_-a0rrfa").style.maxHeight = imageHeight + "px";
+				child.closest(".m3aNC6yp8RrNM_-a0rrfa").style.setProperty("height", imageHeight + "px");
 				break;
 			}
 		}
-		let media2Element = media2Book.querySelector("img");
-		let media2Height = media2Element.offsetHeight;
-
-		let media2Container1 = media2Book.closest(".KVyBaj7FjzElWsqJDmw7v");
-		let media2Container2 = media2Book.closest(".m3aNC6yp8RrNM_-a0rrfa");
-
-		media2Container1.style.setProperty("height", media2Height + "px");
-		media2Container2.style.setProperty("height", media2Height + "px");
-		media2Container1.style.maxHeight = media2Height + "px";
-		media2Container2.style.maxHeight = media2Height + "px";
 	}
 
-	function FeedPage() {
-		let elements = document.querySelectorAll("._3hUbl08LBz2mbXjy0iYhOS,._3b8u2OJXaSDdBWoRB7zUoK");
-		for (let element of elements) {
-			let parent = element.parentElement.parentElement.parentElement.parentElement;
-			let maximumHeight = 512;
-			let descendants = parent.getElementsByTagName("*");
-			for (let descendant of descendants) {
-				let height = descendant.offsetHeight;
-				if (height > maximumHeight) {
-					maximumHeight = height;
-				}
-			}
-			let media2Container1 = element.closest(".KVyBaj7FjzElWsqJDmw7v");
-			let media2Container2 = element.closest(".m3aNC6yp8RrNM_-a0rrfa");
-			media2Container1.style.setProperty("height", maximumHeight + "px");
-			media2Container2.style.setProperty("height", maximumHeight + "px");
-			media2Container1.style.maxHeight = maximumHeight + "px";
-			media2Container2.style.maxHeight = maximumHeight + "px";
-		}
-	}
-
-	var currentURL = window.location.href;
-	var pattern = /^https:\/\/www\.reddit\.com\/r\/[^\/]+\/comments\/.+/;
-	if (pattern.test(currentURL)) {
-		CommentPage();
-	} else {
-		FeedPage();
-	}
 })();
