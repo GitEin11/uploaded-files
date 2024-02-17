@@ -1,0 +1,22 @@
+javascript: (() => {
+	let e = document.querySelectorAll("._3hUbl08LBz2mbXjy0iYhOS,._3b8u2OJXaSDdBWoRB7zUoK");
+	for (let i = 0; i < e.length; i++) {
+		e[i].style.opacity = 1;
+		e[i].style.setProperty('height', '32px');
+		e[i].style.setProperty('top', '464px');
+		e[i].addEventListener("mouseover", function() {
+			this.style.opacity = 1;
+		});
+		e[i].addEventListener("mouseout", function() {
+			this.style.opacity = 1;
+		});
+	}
+	let elements = document.querySelectorAll(".KVyBaj7FjzElWsqJDmw7v, ._3Oa0THmZ3f5iZXAQ0hBJ0k, .m3aNC6yp8RrNM_-a0rrfa");
+	for (let i = 0; i < elements.length; i++) {
+		let element = elements[i];
+		if (element.offsetHeight > 512) {
+			element.style.maxHeight = "512px";
+			element.style.height = "512px";
+		}
+	}
+})();
