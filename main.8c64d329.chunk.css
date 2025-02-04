@@ -1,6 +1,6 @@
 body,
 html {
-	width: calc(100vw) !important;
+	width: 100vw !important;
 	height: 100vh !important;
 	background: #000;
 	margin: 0;
